@@ -1,112 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>ChessBoard</title>
+	<title>catchthedora</title>
 	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	 <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
-	<style>
-
-
-		 *{
-      		font-family: 'ABeeZee';
-      		font-size: 20px;
-      		margin: 0;
-      		padding: 0;
-      		outline: none;
-         }
-
-
-		.table1
-		{
-			
-			height: 450px;
-			
-			text-align: center;
-			margin-left: 25%;
-			margin-right: 25%;
-		
-
-		}
-	
-		
-
-
-	
-		.table1 tr td
-		{
-			border:10px solid white;
-			width: 200px;
-			height: 200px;
-			background-image: linear-gradient(to bottom, #F3F57C ,#97DB17 );
-
-		}
-		img
-		{
-			width: 100px;
-			height: 100px;
-			
-		}
-		.mole
-		{
-			transform:scale(1,0);
-		}
-
-		.mole-active
-		{
-			transform: scale(1,1);
-			transform-origin: bottom;
-			transition: transform 0.5s linear;
-		}
-		.btns
-		{
-			text-align: center;
-		}
-		.lbls
-		{
-			text-align: center;
-			margin-top: 30px;
-		}
-		button
-		{
-			width: 80px;
-			border-radius: 20px;
-			border:none;
-			background-color: green;
-			color: white;
-		}
-		.heading
-		{
-			font-size: 36px;
-			font-family: 'ABeeZee';
-			padding-bottom: 50px;
-			color: green;
-		}
-		.image
-		{
-			width: 50px;
-			height: 40px;
-
-		}
-		.time
-		{
-			width: 30px;
-		}
-		input
-		{
-			background-color: #3DD12C ;
-			border: none;
-			border-radius: 15px;
-			line-height: 30px;
-			text-align: center;
-		}
-		.time
-		{
-			background-color: white;
-			color: red;
-		}
-
-
-	</style>
+	<link rel="stylesheet" type="text/css" href="game.css">
 </head>
 <body>
 	<div class="lbls">
@@ -203,7 +101,7 @@
     	{
     		counter--;
     		document.getElementById('time1').value = counter;
-    		
+
     	}
 
     	else
