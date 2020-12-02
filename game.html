@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ChessBoard</title>
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	 <link href='https://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet'>
+	<style>
+
+
+		 *{
+      		font-family: 'ABeeZee';
+      		font-size: 20px;
+      		margin: 0;
+      		padding: 0;
+      		outline: none;
+         }
+
+
+		.table1
+		{
+			
+			height: 450px;
+			
+			text-align: center;
+			margin-left: 25%;
+			margin-right: 25%;
+		
+
+		}
+	
+		
+
+
+	
+		.table1 tr td
+		{
+			border:10px solid white;
+			width: 200px;
+			height: 200px;
+			background-image: linear-gradient(to bottom, #F3F57C ,#97DB17 );
+
+		}
+		img
+		{
+			width: 100px;
+			height: 100px;
+			
+		}
+		.mole
+		{
+			transform:scale(1,0);
+		}
+
+		.mole-active
+		{
+			transform: scale(1,1);
+			transform-origin: bottom;
+			transition: transform 0.5s linear;
+		}
+		.btns
+		{
+			text-align: center;
+		}
+		.lbls
+		{
+			text-align: center;
+			margin-top: 30px;
+		}
+		button
+		{
+			width: 80px;
+			border-radius: 20px;
+			border:none;
+			background-color: green;
+			color: white;
+		}
+		.heading
+		{
+			font-size: 36px;
+			font-family: 'ABeeZee';
+			padding-bottom: 50px;
+			color: green;
+		}
+		.image
+		{
+			width: 50px;
+			height: 40px;
+
+		}
+		.time
+		{
+			width: 30px;
+		}
+		input
+		{
+			background-color: #3DD12C ;
+			border: none;
+			border-radius: 15px;
+			line-height: 30px;
+			text-align: center;
+		}
+		.time
+		{
+			background-color: white;
+			color: red;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div class="lbls">
+		<h1 class="heading">CATCH THE DORA<img src="dora-removebg-preview.png" class="image"></h1>
+	<label>Score:</label>
+		<input type="text" class="result" id="result1">
+		
+		Highscore
+		<input type="text"  id="highscore" value="0">
+		
+		<input type="text" class="time" id="time1" value="30">
+		<label><i class='far fa-clock' style='font-size:30px'></i></label>
+	</div>
+   
+	<div class="table1">
+	
+	<table>
+		<tr>
+			<td><img src="dora-removebg-preview.png" class="mole" id= "0"></td>
+			<td><img src="dora-removebg-preview.png" class="mole" id="1"></td>
+			<td><img src="dora-removebg-preview.png" class="mole" id="2"></td>
+		</tr>
+		<tr>
+			<td><img src="dora-removebg-preview.png" class="mole" id="3"></td>
+			<td><img src="dora-removebg-preview.png" class="mole" id="4"></td>
+			<td><img src="dora-removebg-preview.png" class="mole" id="5"></td>
+		</tr>
+
+	</table>
+</div>
+
+<div class="btns">
+	<button class="start">Start</button>
+	<button class="quit">Reset</button>
+</div>
+
+
+
+<script>
+
+	var moles = document.querySelectorAll(".mole");
+
+	var scorec = document.querySelector(".result")
+	var molearr = Array.prototype.slice.call(moles);
+
+    
+	var click1;
+	var score=0;
+	var count=0;
+	var interval;
+	var sc=0;
+	var hic=parseInt(localStorage.getItem('hi'));
+	document.getElementById('highscore').value=localStorage.getItem('hi');
+
+	
+
+
+	function vis()
+	{
+        //returns the element in array
+
+		molearr.forEach(curr=>{curr.classList.remove("mole-active");});
+
+		x=Math.floor(Math.random()*6);
+		molearr[x].classList.add("mole-active");
+
+		//console.log(molearr[x].id)
+		click1 = molearr[x].id;
+
+
+
+	}
+	
+
+	function scores()
+	{
+
+
+		molearr.forEach(curr1=>{curr1.addEventListener("click",function(){if(click1==curr1.id){
+		score++;
+		document.getElementById('result1').value = score ;}})});
+
+
+	}
+
+
+	scores();
+    function timer()
+    {
+    	
+
+    	var counter = document.getElementById('time1').value;
+    	if(counter>0)
+    	{
+    		counter--;
+    		document.getElementById('time1').value = counter;
+    		
+    	}
+
+    	else
+    	{
+    		clearInterval(y);
+    		alert('ooops....time has been over...try again ');
+    		sc = parseInt(document.getElementById('result1').value);
+    		if(sc>hic)
+    		{
+    			hic=sc;
+    			sc=0;
+    			localStorage.setItem('hi',hic);
+    			document.getElementById('highscore').value=localStorage.getItem('hi');
+    		}
+    		else
+    		{
+    			document.getElementById('highscore').value=localStorage.getItem('hi');
+    		}
+    		location.reload();
+    	}}
+
+
+  
+
+
+
+ function update()
+ {
+
+    vis();
+ 	timer();
+ 
+ 		
+ }
+ var y;
+
+ document.querySelector(".start").addEventListener("click",function(){
+ 	if(!interval)
+ 	{
+ 		y=setInterval(update,800);
+ 	}
+
+ })
+
+ document.querySelector(".quit").addEventListener("click",function(){location.reload();})
+
+
+
+
+
+
+ //document.getElementById('highscore').value=localStorage.getItem('hc');
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+	
+</script>
+
+</body>
+</html>
